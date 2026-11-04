@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ titulo }} · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<a class="volver" href="{% url 'gestion' %}">&larr; Volver a gestión</a>
+
+<section class="caja">
+    <h1>{{ titulo }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {% for campo in form %}
+            <div class="campo">
+                {{ campo.label_tag }}
+                {{ campo }}
+                {% for error in campo.errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="boton">Guardar</button>
+        <a class="boton boton-claro" href="{% url 'gestion' %}">Cancelar</a>
+    </form>
+</section>
+{% endblock %}

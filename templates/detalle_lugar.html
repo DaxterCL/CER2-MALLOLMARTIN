@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ lugar.nombre }} · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<a class="volver" href="{% url 'catalogo' %}">&larr; Volver al catálogo</a>
+
+<article class="detalle">
+    <div class="detalle-imagen">
+        {% if lugar.imagen %}
+            <img src="{{ lugar.imagen }}" alt="{{ lugar.nombre }}" onerror="this.style.display='none'">
+        {% else %}
+            <span>Sin imagen</span>
+        {% endif %}
+    </div>
+
+    <div class="detalle-texto">
+        <a class="etiqueta" href="{% url 'lugares_por_categoria' lugar.categoria.pk %}">{{ lugar.categoria.nombre }}</a>
+        <h1>{{ lugar.nombre }}</h1>
+
+        <dl class="ficha">
+            <dt>Ubicación</dt>
+            <dd>{{ lugar.ubicacion }}</dd>
+            <dt>Año de construcción</dt>
+            <dd>{{ lugar.anio_construccion }}</dd>
+            <dt>Categoría</dt>
+            <dd>{{ lugar.categoria.nombre }}</dd>
+        </dl>
+
+        <p>{{ lugar.descripcion|linebreaksbr }}</p>
+
+        {# El botón de editar solo aparece si el usuario tiene el permiso #}
+        {% if perms.catalogo.change_lugarpatrimonial %}
+            <a class="boton" href="{% url 'editar_lugar' lugar.pk %}">Editar este lugar</a>
+        {% endif %}
+    </div>
+</article>
+{% endblock %}

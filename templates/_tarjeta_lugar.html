@@ -1,0 +1,17 @@
+{# Tarjeta reutilizable de un lugar. Se incluye dentro de un for que define la variable "lugar". #}
+<article class="tarjeta">
+    <a href="{% url 'detalle_lugar' lugar.pk %}" class="tarjeta-imagen">
+        {% if lugar.imagen %}
+            <img src="{{ lugar.imagen }}" alt="{{ lugar.nombre }}" loading="lazy"
+                 onerror="this.style.display='none'">
+        {% else %}
+            <span>Sin imagen</span>
+        {% endif %}
+    </a>
+    <div class="tarjeta-cuerpo">
+        <a class="etiqueta" href="{% url 'lugares_por_categoria' lugar.categoria.pk %}">{{ lugar.categoria.nombre }}</a>
+        <h3><a href="{% url 'detalle_lugar' lugar.pk %}">{{ lugar.nombre }}</a></h3>
+        <p class="dato">{{ lugar.ubicacion }} &middot; {{ lugar.anio_construccion }}</p>
+        <p>{{ lugar.descripcion|truncatewords:18 }}</p>
+    </div>
+</article>

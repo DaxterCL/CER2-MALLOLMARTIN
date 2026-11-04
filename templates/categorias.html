@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Categorías · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<h1>Categorías patrimoniales</h1>
+<p class="subtitulo">Elige una categoría para ver los lugares que pertenecen a ella.</p>
+
+{% if categorias %}
+    <div class="grilla">
+        {% for categoria in categorias %}
+            <a class="categoria" href="{% url 'lugares_por_categoria' categoria.pk %}">
+                <h3>{{ categoria.nombre }}</h3>
+                <p>{{ categoria.descripcion }}</p>
+                <span class="contador">{{ categoria.total_lugares }} lugar{{ categoria.total_lugares|pluralize:"es" }}</span>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="vacio">No hay categorías registradas.</p>
+{% endif %}
+{% endblock %}

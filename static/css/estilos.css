@@ -1,0 +1,448 @@
+/* ---------- Colores y base ---------- */
+:root {
+    --fondo: #f6f1e7;
+    --texto: #2b2620;
+    --suave: #6d6254;
+    --acento: #a4452c;
+    --acento-oscuro: #7e3320;
+    --oscuro: #3a2f25;
+    --borde: #ddd2bf;
+    --blanco: #fffdf9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.55;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.2;
+}
+
+a {
+    color: var(--acento);
+}
+
+.contenedor {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contenido {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    min-height: 70vh;
+}
+
+/* ---------- Cabecera ---------- */
+.cabecera {
+    background: var(--oscuro);
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.marca {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.marca span {
+    color: #e0a070;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.menu a {
+    color: #eadfce;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.usuario {
+    color: #e0a070;
+    font-size: 0.9rem;
+}
+
+.form-salir {
+    margin: 0;
+}
+
+.boton-enlace {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #eadfce;
+    font: inherit;
+    cursor: pointer;
+}
+
+.boton-enlace:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ---------- Pie ---------- */
+.pie {
+    background: var(--oscuro);
+    color: #cbbfae;
+    text-align: center;
+    padding: 18px 0;
+    font-size: 0.9rem;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+    display: inline-block;
+    background: var(--acento);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.boton:hover {
+    background: var(--acento-oscuro);
+}
+
+.boton-claro {
+    background: transparent;
+    color: var(--acento);
+    border: 1px solid var(--acento);
+}
+
+.boton-claro:hover {
+    background: var(--acento);
+    color: #fff;
+}
+
+/* ---------- Portada ---------- */
+.portada {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 36px;
+    margin-bottom: 40px;
+}
+
+.portada h1 {
+    font-size: 2.4rem;
+    margin-top: 0;
+}
+
+.cifras {
+    display: flex;
+    gap: 40px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--borde);
+    color: var(--suave);
+}
+
+.cifras strong {
+    display: block;
+    font-family: Georgia, serif;
+    font-size: 2rem;
+    color: var(--acento);
+}
+
+/* ---------- Grilla y tarjetas ---------- */
+.grilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.tarjeta {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-imagen,
+.detalle-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e6dccb;
+    color: var(--suave);
+    overflow: hidden;
+}
+
+.tarjeta-imagen {
+    height: 180px;
+}
+
+.tarjeta-imagen img,
+.detalle-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tarjeta-cuerpo {
+    padding: 16px;
+}
+
+.tarjeta-cuerpo h3 {
+    margin: 8px 0 4px;
+    font-size: 1.15rem;
+}
+
+.tarjeta-cuerpo h3 a {
+    color: var(--texto);
+    text-decoration: none;
+}
+
+.tarjeta-cuerpo h3 a:hover {
+    color: var(--acento);
+}
+
+.dato {
+    color: var(--suave);
+    font-size: 0.88rem;
+    margin: 0 0 8px;
+}
+
+.etiqueta {
+    display: inline-block;
+    background: #efe0cc;
+    color: var(--acento-oscuro);
+    font-size: 0.78rem;
+    padding: 2px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* Tarjetas de la página de categorías */
+.categoria {
+    display: block;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-left: 5px solid var(--acento);
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: var(--texto);
+}
+
+.categoria:hover {
+    background: #fff;
+    border-left-color: var(--oscuro);
+}
+
+.categoria h3 {
+    margin: 0 0 8px;
+}
+
+.contador {
+    color: var(--acento);
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* ---------- Detalle de un lugar ---------- */
+.detalle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 16px;
+}
+
+.detalle-imagen {
+    min-height: 320px;
+    border-radius: 10px;
+}
+
+.detalle-texto h1 {
+    margin: 10px 0 14px;
+}
+
+.ficha {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 16px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 18px;
+}
+
+.ficha dt {
+    font-weight: bold;
+    color: var(--suave);
+}
+
+.ficha dd {
+    margin: 0;
+}
+
+.volver {
+    text-decoration: none;
+}
+
+/* ---------- Formularios y cajas ---------- */
+.caja {
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 28px;
+    max-width: 640px;
+}
+
+.caja-angosta {
+    max-width: 440px;
+    margin: 20px auto;
+}
+
+.centrado {
+    text-align: center;
+}
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: 2px solid #e0a070;
+    border-color: var(--acento);
+}
+
+.error {
+    color: #b3261e;
+    font-size: 0.9rem;
+    margin: 4px 0 0;
+}
+
+/* ---------- Avisos ---------- */
+.aviso {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid var(--borde);
+    background: var(--blanco);
+}
+
+.aviso-success {
+    background: #e4f1e1;
+    border-color: #b7d9b0;
+}
+
+.aviso-info {
+    background: #fdf3dc;
+    border-color: #ecd596;
+}
+
+.aviso-error {
+    background: #fbe4e1;
+    border-color: #e8b4ae;
+}
+
+.subtitulo {
+    color: var(--suave);
+    margin-top: 0;
+}
+
+.vacio {
+    color: var(--suave);
+    font-style: italic;
+}
+
+/* ---------- Gestión ---------- */
+.encabezado-gestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+}
+
+.tabla th,
+.tabla td {
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.tabla th {
+    background: #efe6d6;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 720px) {
+    .detalle {
+        grid-template-columns: 1fr;
+    }
+
+    .portada {
+        padding: 22px;
+    }
+
+    .portada h1 {
+        font-size: 1.9rem;
+    }
+}

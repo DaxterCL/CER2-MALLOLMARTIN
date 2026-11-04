@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{{ categoria.nombre }} · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<a class="volver" href="{% url 'categorias' %}">&larr; Todas las categorías</a>
+
+<h1>{{ categoria.nombre }}</h1>
+<p class="subtitulo">{{ categoria.descripcion }}</p>
+
+{% if lugares %}
+    <div class="grilla">
+        {% for lugar in lugares %}
+            {% include '_tarjeta_lugar.html' %}
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="vacio">Esta categoría todavía no tiene lugares registrados.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Inicio · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<section class="portada">
+    <h1>Fundación Patrimonio Vivo</h1>
+    <p>
+        Somos una organización sin fines de lucro dedicada a identificar, documentar y
+        difundir lugares de interés patrimonial en distintas ciudades de Chile:
+        edificios históricos, monumentos, murales y otros espacios que forman parte de
+        nuestra memoria.
+    </p>
+    <p>
+        Este catálogo digital reúne toda esa información en un solo lugar para que
+        cualquier persona pueda consultarla.
+    </p>
+    <a class="boton" href="{% url 'catalogo' %}">Explorar el catálogo</a>
+    <a class="boton boton-claro" href="{% url 'categorias' %}">Ver categorías</a>
+
+    <div class="cifras">
+        <div><strong>{{ total_lugares }}</strong> lugares registrados</div>
+        <div><strong>{{ total_categorias }}</strong> categorías</div>
+    </div>
+</section>
+
+<section>
+    <h2>Agregados recientemente</h2>
+    {% if recientes %}
+        <div class="grilla">
+            {% for lugar in recientes %}
+                {% include '_tarjeta_lugar.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="vacio">Aún no hay lugares registrados.</p>
+    {% endif %}
+</section>
+{% endblock %}

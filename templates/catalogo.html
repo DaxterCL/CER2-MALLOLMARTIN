@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Catálogo · Fundación Patrimonio Vivo{% endblock %}
+
+{% block contenido %}
+<h1>Catálogo patrimonial</h1>
+<p class="subtitulo">Todos los lugares registrados por la fundación.</p>
+
+{% if lugares %}
+    <div class="grilla">
+        {% for lugar in lugares %}
+            {% include '_tarjeta_lugar.html' %}
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="vacio">Todavía no hay lugares en el catálogo.</p>
+{% endif %}
+{% endblock %}

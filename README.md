@@ -92,54 +92,7 @@ y no ser solo números.
 | Con permisos             | Lo anterior + agregar y modificar lugares          |
 | Superusuario             | Todo, incluido Django Admin en `/admin/`           |
 
-## Rutas principales
 
-| Ruta                           | Acceso                             |
-|--------------------------------|------------------------------------|
-| `/`                            | Público                            |
-| `/catalogo/`                   | Público                            |
-| `/lugar/<id>/`                 | Público                            |
-| `/categorias/`                 | Público                            |
-| `/categorias/<id>/`            | Público                            |
-| `/login/` y `/logout/`         | Público                            |
-| `/gestion/`                    | Usuario autenticado                |
-| `/gestion/lugar/nuevo/`        | Autenticado + permiso de agregar   |
-| `/gestion/lugar/<id>/editar/`  | Autenticado + permiso de modificar |
-| `/admin/`                      | Administrador                      |
-
-## Cómo se cubren los requisitos funcionales
-
-| Código | Dónde está                                                                                  |
-|--------|---------------------------------------------------------------------------------------------|
-| RF01   | `inicio` (vista) y `templates/inicio.html`                                                  |
-| RF02   | `catalogo` (vista), consulta con ORM a `LugarPatrimonial`                                   |
-| RF03   | `detalle_lugar` (vista) y `templates/detalle_lugar.html`                                    |
-| RF04   | Modelo `Categoria` y vista `lista_categorias`                                               |
-| RF05   | `lugares_por_categoria` (vista), filtra con `filter(categoria=...)`                         |
-| RF06   | `catalogo/admin.py` (ambos modelos registrados en Django Admin)                             |
-| RF07   | `templates/base.html`, `_tarjeta_lugar.html` y `static/css/estilos.css`                     |
-| RF08   | `LoginView` en `patrimonio_vivo/urls.py` y `templates/login.html`                           |
-| RF09   | `LogoutView` en `patrimonio_vivo/urls.py` (botón en la barra de navegación)                 |
-| RF10   | Decorador `@login_required` en la vista `gestion`                                           |
-| RF11   | Permisos `add_lugarpatrimonial` y `change_lugarpatrimonial` (asignados desde Django Admin)  |
-| RF12   | `@permission_required(..., raise_exception=True)` responde 403 aunque se use la URL directa |
-
-## Estructura del proyecto
-
-```
-manage.py
-requirements.txt
-patrimonio_vivo/        Configuración del proyecto (settings, urls)
-catalogo/               Aplicación principal
-    models.py           Categoria y LugarPatrimonial (relacionados por ForeignKey)
-    views.py            Vistas públicas y de gestión
-    urls.py             Rutas de la aplicación
-    forms.py            Formulario para agregar/editar lugares
-    admin.py            Registro de modelos en Django Admin
-    fixtures/           Datos iniciales (categorías y lugares) en formato JSON
-templates/              Plantillas HTML (base.html, páginas y 403.html)
-static/css/estilos.css  Hoja de estilos
-```
 
 ## Notas
 
